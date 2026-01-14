@@ -1,21 +1,28 @@
 import React from 'react';
 
-interface CarrierCardProps {
-  carrierName: string;
-  carrierLogoUrl: string;
-  trackingNumber: string;
-  deliveryStatus: string;
+interface Carrier {
+    name: string;
+    details: string;
 }
 
-const CarrierCard: React.FC<CarrierCardProps> = ({ carrierName, carrierLogoUrl, trackingNumber, deliveryStatus }) => {
-  return (
-    <div style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '16px', width: '300px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
-      <img src={carrierLogoUrl} alt={`${carrierName} logo`} style={{ width: '100%', borderRadius: '4px' }} />
-      <h2 style={{ fontSize: '20px', margin: '8px 0' }}>{carrierName}</h2>
-      <p style={{ fontSize: '14px', color: '#555' }}>Tracking Number: <strong>{trackingNumber}</strong></p>
-      <p style={{ fontSize: '14px', color: '#555' }}>Status: <strong>{deliveryStatus}</strong></p>
-    </div>
-  );
+interface CarrierCardProps {
+    carrier: Carrier;
+    onTrack: () => void;
+}
+
+const CarrierCard: React.FC<CarrierCardProps> = ({ carrier, onTrack }) => {
+    return (
+        <div className="border rounded-lg p-4 shadow-md transition duration-300 hover:shadow-lg">
+            <h2 className="text-xl font-bold text-gray-800">{carrier.name}</h2>
+            <p className="text-gray-600">{carrier.details}</p>
+            <button 
+                onClick={onTrack} 
+                className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+            >
+                Track
+            </button>
+        </div>
+    );
 };
 
 export default CarrierCard;
