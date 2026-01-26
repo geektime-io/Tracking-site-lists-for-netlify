@@ -14,9 +14,10 @@ export interface Carrier {
   id: string;
   name: string;
   url: string;
+  urls?: string[]; // Additional tracking URLs when multiple are available
   description: string;
   region: Region;
   flag: string; // Emoji flag representation
-  icon?: string; 
+  icon?: string;
   tags: string[];
 }

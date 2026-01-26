@@ -16,6 +16,7 @@ export const CARRIERS: Carrier[] = [
     id: 'usa-standard',
     name: 'USA Standard Shipping',
     url: 'http://106.53.210.204:8082/trackIndex.htm',
+    urls: ['http://106.53.210.204:8082/trackIndex.htm', 'http://www.jzgjgyl.com/track.php?number'],
     description: 'USPS website updates only after arrival in US (approx 2-3 weeks). Track here for updates within China.',
     region: Region.NORTH_AMERICA,
     flag: '🇺🇸',
@@ -131,12 +132,13 @@ export const CARRIERS: Carrier[] = [
   },
   {
     id: 'israel-mena',
-    name: 'Israel Line',
+    name: 'Middle East (Israel, UAE, Qatar, Saudi Arabia)',
     url: 'http://www.mena56.com/',
-    description: 'Dedicated tracking for Israel shipments via Mena56.',
+    urls: ['http://www.mena56.com/', 'https://www.17track.net/'],
+    description: 'Dedicated tracking for Middle East shipments via Mena56 or 17track.',
     region: Region.MIDDLE_EAST,
     flag: '🇮🇱',
-    tags: ['Israel', 'Mena56'],
+    tags: ['Israel', 'UAE', 'Qatar', 'Saudi Arabia', 'Mena56', 'Middle East'],
   },
   {
     id: 'india-line',
@@ -146,5 +148,14 @@ export const CARRIERS: Carrier[] = [
     region: Region.ASIA,
     flag: '🇮🇳',
     tags: ['India', 'Ind56'],
+  },
+  {
+    id: 'vietnam-line',
+    name: 'Vietnam Line',
+    url: 'https://www.best-inc.vn/track?bills=',
+    description: 'Dedicated tracking for Vietnam shipments. The site may not work sometimes, please try again later if it does not work.',
+    region: Region.ASIA,
+    flag: '🇻🇳',
+    tags: ['Vietnam', 'Asia', 'Best Inc'],
   }
 ];
