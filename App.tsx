@@ -33,9 +33,9 @@ const App: React.FC = () => {
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex items-center">
+            <a href="https://geektime.io/" target="_blank" rel="noopener noreferrer" className="flex items-center">
               <img src={LOGO_URL} alt="GeekTime Logo" className="h-10 w-auto object-contain" />
-            </div>
+            </a>
             <div className="hidden md:block h-6 w-px bg-slate-300 mx-2"></div>
             <span className="hidden md:block text-slate-600 font-medium tracking-tight">Tracking Sites List</span>
           </div>

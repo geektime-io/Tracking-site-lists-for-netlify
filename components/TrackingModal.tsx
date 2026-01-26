@@ -10,8 +10,11 @@ type TrackingModalProps = {
 const TrackingModal: React.FC<TrackingModalProps> = ({ carrier, onClose }) => {
     if (!carrier) return null;
 
-    const handleVisitSite = () => {
-        window.open(carrier.url, '_blank', 'noopener,noreferrer');
+    // Use urls array if available, otherwise fall back to single url
+    const trackingUrls = carrier.urls && carrier.urls.length > 0 ? carrier.urls : [carrier.url];
+
+    const handleVisitSite = (url: string) => {
+        window.open(url, '_blank', 'noopener,noreferrer');
     };
 
     return (
@@ -45,13 +48,18 @@ const TrackingModal: React.FC<TrackingModalProps> = ({ carrier, onClose }) => {
                         ))}
                     </div>
 
-                    <button
-                        onClick={handleVisitSite}
-                        className="w-full bg-teal-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2"
-                    >
-                        <ExternalLink size={18} />
-                        Visit Tracking Site
-                    </button>
+                    <div className="flex flex-col gap-3">
+                        {trackingUrls.map((url, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleVisitSite(url)}
+                                className="w-full bg-teal-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-teal-700 transition-colors flex items-center justify-center gap-2"
+                            >
+                                <ExternalLink size={18} />
+                                {trackingUrls.length > 1 ? `Visit Tracking Site ${index + 1}` : 'Visit Tracking Site'}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
